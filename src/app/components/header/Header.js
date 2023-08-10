@@ -5,8 +5,14 @@ import { BiCaretDown } from 'react-icons/bi';
 import { HiOutlineSearch } from 'react-icons/hi';
 import { SlLocationPin } from 'react-icons/sl';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+    // const cartItems = useSelector(state => state.cart);
+
+    // Calculate the total quantity of items in the cart
+    // const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <>

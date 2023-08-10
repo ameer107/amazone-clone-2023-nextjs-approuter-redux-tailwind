@@ -3,7 +3,8 @@ import Image from "next/image";
 import { HiShoppingCart } from "react-icons/hi"
 import { FaHeart } from "react-icons/fa"
 import PriceFormat from "../components/PriceFormat";
-
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/slice/cartSlice'
 
 export const getData = async () => {
     const res = await fetch("https://fakestoreapiserver.reactbd.com/tech");
@@ -14,7 +15,9 @@ export const getData = async () => {
 
 const Products = async () => {
 
+    const dispatch = useDispatch();
     const productData = await getData();
+    
     return (
         <>
             <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-5 mb-5">
@@ -64,6 +67,8 @@ const Products = async () => {
                                         {items.description.substring(0, 120)}
                                     </p>
                                     <button
+                                         onClick={() => dispatch(addToCart(items))}
+
                                         className="h-10 font-medium bg-amazon_blue text-white rounded-md hover:bg-amazon_yellow hover:text-black mt-2 duration-300">
                                         Add to Cart
                                     </button>
