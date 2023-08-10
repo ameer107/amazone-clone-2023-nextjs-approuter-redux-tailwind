@@ -9,10 +9,11 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-    // const cartItems = useSelector(state => state.cart);
+    const cart = useSelector((state) => state.cart);
+
 
     // Calculate the total quantity of items in the cart
-    // const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    let totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <>
@@ -56,7 +57,7 @@ const Header = () => {
                     <Link href='/cart' className='flex items-center px-2 border border-transparent hover:border-white cursor-pointer duration-300 h-[70%] relative'>
                         <Image className='w-auto object-cover h-8' src={Cart} alt='Cart Image' />
                         <p className='text-white font-bold text-xs mt-3'>Cart</p>
-                        <p className='font-sm absolute top-1 left-[29px] text-amazon_yellow font-semibold'>0</p>
+                        <p className='font-sm absolute top-1 left-[29px] text-amazon_yellow font-semibold'>{totalQuantity}</p>
                     </Link>
                 </div>
             </div>

@@ -1,13 +1,15 @@
+'use client'
 import Header from './components/header/Header'
 import BottomHeader from './components/header/BottomHeader'
 import Footer from './components/Footer'
 import Banner from './components/Banner'
 import Products from './products/page'
-
+import  store from '../redux/store'
+import { Provider } from 'react-redux'
 
 export default function Home() {
   return (
-    <>
+    <Provider store={store}>
       <Header />
       <BottomHeader />
       <div className='max-w-screen-2xl mx-auto'>
@@ -17,7 +19,7 @@ export default function Home() {
         </div>
       </div>
       <Footer />
-    </>
+    </Provider>
   )
 }
 

@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { HiShoppingCart } from "react-icons/hi"
 import { FaHeart } from "react-icons/fa"
 import PriceFormat from "../components/PriceFormat";
-import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/cartSlice'
+import { useDispatch } from 'react-redux';
+
 
 export const getData = async () => {
     const res = await fetch("https://fakestoreapiserver.reactbd.com/tech");
@@ -17,6 +18,7 @@ const Products = async () => {
 
     const dispatch = useDispatch();
     const productData = await getData();
+
     
     return (
         <>
