@@ -49,7 +49,7 @@ const Cart = () => {
                             </div>
                             <div className="pt-2 flex flex-col gap-2">
                                 {cart.map((item) => (
-                                    <div className="bg-gray-100 rounded-lg flex items-center gap-4">
+                                    <div key={item._id} className="bg-gray-100 rounded-lg flex items-center gap-4">
                                         <Image
                                             className="object-cover"
                                             width={150}
