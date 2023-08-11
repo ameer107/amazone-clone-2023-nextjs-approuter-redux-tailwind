@@ -19,7 +19,7 @@ const Products = async () => {
     const dispatch = useDispatch();
     const productData = await getData();
 
-    
+
     return (
         <>
             <div className="w-full px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-5 mb-5">
@@ -33,11 +33,13 @@ const Products = async () => {
                                         width={300} height={300} src={items.image} alt="productImage" />
                                     <div className="w-12 h-24 absolute bottom-10 right-0 border-[1px] border-gray-300 rounded-md bg-white flex flex-col translate-x-20 group-hover:translate-x-0 transition-transform duration-300">
                                         <span
+                                            onClick={() => dispatch(addToCart(items))}
+
                                             className="w-full h-full border-b-[1px] border-gray-400 rounded-t-md flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300">
                                             <HiShoppingCart />
                                         </span>
-                                        <span 
-                                        className="w-full h-full border-b-[1px] border-gray-400 rounded-b-md flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300">
+                                        <span
+                                            className="w-full h-full border-b-[1px] border-gray-400 rounded-b-md flex items-center justify-center text-xl bg-transparent hover:bg-amazon_yellow cursor-pointer duration-300">
                                             <FaHeart />
                                         </span>
                                     </div>
@@ -69,7 +71,7 @@ const Products = async () => {
                                         {items.description.substring(0, 120)}
                                     </p>
                                     <button
-                                         onClick={() => dispatch(addToCart(items))}
+                                        onClick={() => dispatch(addToCart(items))}
 
                                         className="h-10 font-medium bg-amazon_blue text-white rounded-md hover:bg-amazon_yellow hover:text-black mt-2 duration-300">
                                         Add to Cart
