@@ -5,20 +5,29 @@ import { FaHeart } from "react-icons/fa"
 import PriceFormat from "../components/PriceFormat";
 import { addToCart } from '../../redux/slice/cartSlice'
 import { useDispatch } from 'react-redux';
+import { useState, useEffect } from "react";
 
 
-export const getData = async () => {
-    const res = await fetch("https://fakestoreapiserver.reactbd.com/tech");
-    const productslists = await res.json();
-    return productslists
-}
+const Products = () => {
 
 
-const Products = async () => {
+    const [productData, setProductData] = useState([]);
+
+    useEffect(() => {
+        const fetchProductData = async () => {
+            try {
+                const response = await fetch("https://fakestoreapiserver.reactbd.com/tech");
+                const productList = await response.json();
+                setProductData(productList);
+            } catch (error) {
+                console.error("Error fetching product data:", error);
+            }
+        };
+
+        fetchProductData();
+    }, []);
 
     const dispatch = useDispatch();
-    const productData = await getData();
-
 
     return (
         <>
